@@ -10,12 +10,32 @@
   </p>
 
   <p align="center">
+    <a href="https://firgiawann.github.io/catat-uang/">
+      <img src="https://img.shields.io/badge/🌐_Live_Web_Demo-Play_Instantly-ff69b4?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Live Web Demo"/>
+    </a>
+    &nbsp;
+    <a href="https://github.com/firgiawann/catat-uang/releases">
+      <img src="https://img.shields.io/badge/🤖_Download_APK-Release_v1.0.0-green?style=for-the-badge&logo=android&logoColor=white" alt="Download APK"/>
+    </a>
+  </p>
+
+  <p align="center">
     <a href="#-fitur-unggulan-manis">Fitur Unggulan</a> •
     <a href="#-arsitektur--optimasi-ringan">Optimasi Ukuran</a> •
     <a href="#-panduan-instalasi">Instalasi</a> •
     <a href="#-kontribusi">Latar Belakang</a>
   </p>
 </div>
+
+---
+
+## 🌐 Coba Sekarang! (Live Demo & APK)
+
+Kakak bisa langsung mencoba aplikasi **Catet Uang** secara instan:
+* **💻 Play on Web (Live Preview)**: Buka aplikasi langsung di browser HP atau laptop Kakak tanpa instalasi apa pun! 
+  👉 **[https://firgiawann.github.io/catat-uang/](https://firgiawann.github.io/catat-uang/)**
+* **🤖 Unduh File APK Rilis**: Unduh file APK rilis resmi yang sangat ringan (hanya ~18MB untuk tipe 64-bit umum) di halaman Releases repositori ini:
+  👉 **[Unduh APK Rilis Terbaru](https://github.com/firgiawann/catat-uang/releases)**
 
 ---
 
