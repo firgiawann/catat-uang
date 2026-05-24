@@ -158,7 +158,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           controller: _nameController,
                           style: TextStyle(fontSize: 14, color: activeColors.textPrimary, fontWeight: FontWeight.bold),
                           decoration: InputDecoration(
-                            hintText: "Contoh: Budi, Sarah, ...",
+                            hintText: "Contoh: Awan, Nisa, User",
                             hintStyle: TextStyle(
                               fontSize: 13,
                               color: activeColors.textSecondary.withOpacity(0.4),
@@ -370,11 +370,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     }
 
     final lowerName = name.toLowerCase().trim();
-    final isNisaOrNurun = lowerName.contains('nisa');
+    final isNisaOrNurun = lowerName.contains('nisa') || lowerName.contains('nurun');
     if (lowerName == 'awan') {
       return "Halo Awan! ☁️ Siap menjadi guide keuangan terbaik hari ini? Mari buat catatan keuangan sesempurna mungkin agar bisa menyebarkan kebiasaan rapi dan tenang ke orang-orang di sekitarmu! 😉🌸";
     } else if (isNisaOrNurun) {
-      return "Halo Nisa! 🌸 Bunga-bunga bermekaran menyambut langkah hematmu hari ini. Awan siap menjadi guide setiamu untuk menjaga dompetmu tetap rapi dan tenang setiap hari. Mari mulai perjalanan hemat kita! ☁️☕";
+      final isNurun = lowerName.contains('nurun');
+      final displayName = isNurun ? "Nurun" : "Nisa";
+      final options = [
+        "Halo $displayName! 🌸 Bunga-bunga bermekaran menyambut langkah hematmu hari ini. Awan siap menjadi guide setiamu untuk menjaga dompetmu tetap rapi dan tenang setiap hari. Mari mulai perjalanan hemat kita! ☁️☕",
+        "Halo $displayName! ✨ Senyumanmu adalah penyemangat terbaik. Awan akan setia membantumu memantau dan merapikan catatan pengeluaran agar harimu tetap tenang dan menyenangkan! 🌸☁️",
+        "Hai $displayName! 🍀 Langkah kecil yang rapi hari ini membawa ketenangan esok hari. Awan di sini sebagai guidenya siap siaga menemani setiap langkah hematmu! Semangat ya! 🌸✨",
+        "Halo $displayName! 🌻 Kehadiranmu membawa kehangatan. Yuk, kelola anggaran bulananmu bersama Awan sebagai guide pribadimu agar impian finansialmu lekas tercapai! ☁️💛",
+        "Hai $displayName! 🧸 Ketekunanmu sungguh menginspirasi. Awan berjanji akan menjagamu dari segala pemborosan agar dompetmu selalu aman, rapi, dan terkontrol dengan baik! 🌸💫"
+      ];
+      final emojiIdx = _emojis.indexOf(_selectedEmoji);
+      final idx = emojiIdx >= 0 ? (emojiIdx % options.length) : (name.length % options.length);
+      return options[idx];
     }
 
     final code = name.length % 3;
