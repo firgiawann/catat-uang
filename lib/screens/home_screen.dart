@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../providers/budget_provider.dart';
 import '../widgets/theme_colors.dart';
 import '../services/notification_helper.dart';
@@ -36,7 +37,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final prefs = await SharedPreferences.getInstance();
+      final hasShown = prefs.getBool('has_shown_tour') ?? false;
+      if (hasShown) return;
+
       final provider = Provider.of<BudgetProvider>(context, listen: false);
       if (provider.currentTransactions.isEmpty) {
         setState(() {
@@ -232,6 +237,18 @@ class _HomeScreenState extends State<HomeScreen> {
     final double totalKeluar = provider.totalTerpakai;
     final double saldoSisa = provider.saldo;
 
+    final today = DateTime.now();
+    final double pengeluaranHariIni = transactions
+        .where((tx) {
+          final date = DateTime.fromMillisecondsSinceEpoch(tx.timestamp);
+          return tx.isExpense &&
+              date.year == today.year &&
+              date.month == today.month &&
+              date.day == today.day;
+        })
+        .map((tx) => tx.amount)
+        .fold(0.0, (sum, val) => sum + val);
+
     final double sisaAnggaran = targetAmount - totalKeluar;
     final double sisaPercent = targetAmount > 0.0
         ? ((sisaAnggaran / targetAmount) * 100).clamp(0.0, 100.0)
@@ -367,6 +384,7 @@ class _HomeScreenState extends State<HomeScreen> {
             sisaAnggaran,
             totalMasuk,
             provider.selectedMonth,
+            pengeluaranHariIni,
           ),
           const SizedBox(height: 16),
 
@@ -496,7 +514,8 @@ class _HomeScreenState extends State<HomeScreen> {
       double sisaPercent,
       double sisaAnggaran,
       double totalMasuk,
-      String selectedMonth) {
+      String selectedMonth,
+      double pengeluaranHariIni) {
     Color progressColor = amountGreen;
     if (progressValue > 0.9) {
       progressColor = amountRed;
@@ -645,6 +664,43 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             )
           ],
+
+          const SizedBox(height: 16),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+            decoration: BoxDecoration(
+              color: widget.colors.backgroundPolish.withOpacity(0.4),
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: widget.colors.border.withOpacity(0.15)),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    const Text("💸", style: TextStyle(fontSize: 14)),
+                    const SizedBox(width: 8),
+                    Text(
+                      "Pengeluaran Hari Ini",
+                      style: TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.bold,
+                        color: widget.colors.textSecondary,
+                      ),
+                    ),
+                  ],
+                ),
+                Text(
+                  _formatRupiah(pengeluaranHariIni),
+                  style: const TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w900,
+                    color: amountRed,
+                  ),
+                ),
+              ],
+            ),
+          ),
 
           const SizedBox(height: 12),
           Divider(color: widget.colors.border.withOpacity(0.3)),
@@ -1085,7 +1141,11 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     return GestureDetector(
-      onTap: () {
+      onTap: () async {
+        if (_tourStep == 4) {
+          final prefs = await SharedPreferences.getInstance();
+          await prefs.setBool('has_shown_tour', true);
+        }
         setState(() {
           _tourStep = (_tourStep + 1) % 5;
         });
