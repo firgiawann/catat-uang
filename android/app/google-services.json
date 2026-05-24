@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "44167194150",
+    "project_id": "catet-uang-id",
+    "storage_bucket": "catet-uang-id.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:44167194150:android:1bce21749f2d58725168e7",
+        "android_client_info": {
+          "package_name": "id.awni.money"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfy_SzST0l-kHNm89LTXF3Nh0hhOgwnPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

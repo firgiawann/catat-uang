@@ -1,0 +1,74 @@
+# =========================================================================
+#                    Catet Uang - Official Gitignore
+# =========================================================================
+
+# 💻 OS / System Files
+# -------------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.swp
+*.lock
+*.log
+*.tmp
+*.bak
+
+# 🚀 Flutter / Dart / Pub Packager
+# -------------------------------------------------------------------------
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+/build/
+/coverage/
+/doc/api/
+
+# 🛠️ Code Editors & IDEs
+# -------------------------------------------------------------------------
+# VS Code
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# IntelliJ IDEA & Android Studio
+*.iml
+*.ipr
+*.iws
+.idea/
+.gradle/
+local.properties
+captures/
+.externalNativeBuild/
+.cxx/
+
+# 📱 Android Specific Build Artifacts
+# -------------------------------------------------------------------------
+*.apk
+*.ap_
+*.aab
+*.dex
+*.class
+**/android/app/debug/
+**/android/app/profile/
+**/android/app/release/
+
+# 🗝️ Security Keys, Keystores & Properties
+# -------------------------------------------------------------------------
+*.keystore
+*.jks
+*.p12
+*.pem
+*.key
+android/key.properties
+
+# 🎯 Symbolication & Obfuscation Mapping
+# -------------------------------------------------------------------------
+app.*.symbols
+app.*.map.json
+build/app/symbols/
