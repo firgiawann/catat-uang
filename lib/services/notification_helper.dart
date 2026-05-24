@@ -33,7 +33,7 @@ class NotificationHelper {
     NotificationTemplate("Dompet bilang: dicatat dulu! 😄", "Tolong dicatat dulu sebelum istirahat ya. Cuma sebentar kok!"),
     NotificationTemplate("Hari ini produktif? 🌟", "Buktikan dengan catatan keuangan yang lengkap! Yuk buka Catet Uang!"),
     NotificationTemplate("Satu catatan malam ini 🌸", "Satu catatan sekarang, besok lebih tenang dan rapi. Yuk!"),
-    NotificationTemplate("Pengingat malam yang hangat ☁️", "Awan ingin mengingatkan: catat dulu ya sebelum rebahan!"),
+    NotificationTemplate("Pengingat malam yang hangat ☁️", "Awan di sini ingin mengingatkan: catat pengeluaranmu dulu yuk sebelum tidur!"),
     NotificationTemplate("Dompet sehat, tidur nyenyak 💤", "Rekap hari ini supaya besok tidak ada yang terlupakan!"),
   ];
 
@@ -67,8 +67,9 @@ class NotificationHelper {
       'catet_uang_reminder_channel',
       'Pengingat Catet Uang',
       channelDescription: 'Saluran notifikasi untuk mengingatkan pencatatan keuangan',
-      importance: Importance.defaultImportance,
-      priority: Priority.defaultPriority,
+      importance: Importance.max,
+      priority: Priority.high,
+      playSound: true,
     );
 
     const NotificationDetails platformChannelSpecifics = NotificationDetails(
@@ -129,8 +130,9 @@ class NotificationHelper {
           'catet_uang_reminder_channel',
           'Pengingat Catet Uang',
           channelDescription: 'Saluran notifikasi untuk mengingatkan pencatatan keuangan',
-          importance: Importance.defaultImportance,
-          priority: Priority.defaultPriority,
+          importance: Importance.max,
+          priority: Priority.high,
+          playSound: true,
         );
         await _notificationsPlugin.show(
           id: id + random.nextInt(100),

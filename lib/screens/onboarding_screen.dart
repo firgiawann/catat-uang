@@ -34,9 +34,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final List<String> _loadingTexts = [
     "Menyiapkan ruang hematmu... 💎",
     "Merias aplikasi dengan warna kesukaanmu... 🎨",
-    "Menghubungkan asisten keuangan pribadimu... 🤖",
+    "Mengaktifkan Awan sebagai Tour Guide setiamu... ☁️✨",
     "Membuat pertahanan hemat anti-boros... 🛡️",
-    "Semua siap! Selamat mengelola uang! 🚀✨"
+    "Semua siap! Awan siap menemanimu! 🚀✨"
   ];
 
   @override
@@ -158,7 +158,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           controller: _nameController,
                           style: TextStyle(fontSize: 14, color: activeColors.textPrimary, fontWeight: FontWeight.bold),
                           decoration: InputDecoration(
-                            hintText: "Contoh: Awan, Nisa, ...",
+                            hintText: "Contoh: Budi, Sarah, ...",
                             hintStyle: TextStyle(
                               fontSize: 13,
                               color: activeColors.textSecondary.withOpacity(0.4),
@@ -370,10 +370,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     }
 
     final lowerName = name.toLowerCase().trim();
+    final isNisaOrNurun = lowerName.contains('nisa');
     if (lowerName == 'awan') {
-      return "Ciyee Kak Awan! ☁️ Awan di langit boleh mendung, tapi dompet Kak Awan harus tetap cerah bersinar! Yuk bikin Kak Nisa bangga dengan catatan hematmu hari ini! 😉🌸";
-    } else if (lowerName == 'nisa') {
-      return "Aww Kak Nisa yang cantik! 🌸 Bunga-bunga bermekaran menyambut langkah hematmu! Jangan lupa ingatkan Kak Awan biar tidak boros beli game minggu ini ya! ☕☁️";
+      return "Halo Awan! ☁️ Siap menjadi guide keuangan terbaik hari ini? Mari buat catatan keuangan sesempurna mungkin agar bisa menyebarkan kebiasaan rapi dan tenang ke orang-orang di sekitarmu! 😉🌸";
+    } else if (isNisaOrNurun) {
+      return "Halo Nisa! 🌸 Bunga-bunga bermekaran menyambut langkah hematmu hari ini. Awan siap menjadi guide setiamu untuk menjaga dompetmu tetap rapi dan tenang setiap hari. Mari mulai perjalanan hemat kita! ☁️☕";
     }
 
     final code = name.length % 3;

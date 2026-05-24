@@ -31,6 +31,20 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   // Badge unlocked recently for popup animation
   String? _justUnlockedBadge;
+  int _tourStep = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final provider = Provider.of<BudgetProvider>(context, listen: false);
+      if (provider.currentTransactions.isEmpty) {
+        setState(() {
+          _tourStep = 1;
+        });
+      }
+    });
+  }
 
   String _formatRupiah(double value) {
     if (value == 0.0) return "Rp0";
@@ -54,12 +68,17 @@ class _HomeScreenState extends State<HomeScreen> {
         "Pagi indah untuk $name! 🍃 Yuk konsisten catat belanjaan!",
         "Selamat pagi $name! 🌻 Hari baru, semangat baru, tabungan baru!",
         "Pagi Kak $name! 🍳 Sudah sarapan? Catat dulu pengeluaran sarapanmu ya!",
-        // Easter Eggs:
-        isNisa 
-            ? "Pagi Nisa! ☀️ Ssst... Kak Awan nemu koin Rp500 di saku celana tadi! 😂🌸" 
-            : "Pagi $name! ☀️ Ssst... Ada koin keberuntungan di saku celanamu hari ini! 😂🍀",
-        "Pagi $name! ☁️ Awan-awan berarak membawa kabar bahwa dompetmu aman hari ini! 🍃",
-        "Pagi $name! 🧸 Kata Nisa: Menghemat hari ini adalah investasi kebahagiaan besok! 🌈",
+        "Pagi $name! ☁️ Awan siap memandu harimu dengan grafik keuangan yang rapi! 📈",
+        "Pagi $name! 🧸 Awan ingetin: Menghemat hari ini adalah investasi kecil untuk ketenangan hari esok! 🌈",
+        if (isNisa) ...[
+          "Selamat pagi Nisa! ☀️ Awan bangga banget kamu udah bangun sepagi ini! Semangat buat hari produktifmu ya, Awan selalu support dari belakang! 🌸✨",
+          "Pagi Nisa! ☀️ Secangkir teh hangat dan embun pagi yang segar siap menemani awal langkah rapimu hari ini! 🌸☕",
+          "Pagi Nisa! ☀️ Awan nemu koin Rp500 di saku celana tadi, lumayan buat nambah celengan! Semangat ya hari ini! 😂🌸",
+          "Selamat pagi Nurun Nisa! ☀️ Bangun pagi dengan senyuman dan dompet yang rapi adalah kunci kebahagiaan hari ini! Semangat! 🌿💖",
+        ] else ...[
+          "Pagi $name! ☀️ Ssst... Ada koin keberuntungan di saku celanamu hari ini! 😂🍀",
+          "Pagi $name! ☁️ Awan-awan berarak membawa kabar bahwa dompetmu aman hari ini! 🍃",
+        ]
       ];
       return options[rng.nextInt(options.length)];
     } else if (hour >= 11 && hour < 15) {
@@ -71,12 +90,15 @@ class _HomeScreenState extends State<HomeScreen> {
         "Siang Kak $name! 🍛 Sudah isi energi? Dompetnya dijaga juga ya!",
         "Halo $name! 🌤️ Ingat batas anggaran belanja siang ini!",
         "Siang, $name! 🌸 Cuaca cerah, catatan keuangan juga harus cerah!",
-        // Easter Eggs:
-        isNisa 
-            ? "Halo Nisa! 🌤️ Kak Awan ingetin makan siang tepat waktu ya, kurangi jajan boba! 🍹🌸" 
-            : "Halo $name! 🌤️ Kak Awan ingetin makan siang tepat waktu ya, kurangi jajan manis! 🍹🍀",
         "Siang $name! ☁️ Awan di langit menyerupai mangkok mie ayam... Lapar ya? Catat ya! 🍜",
-        "Siang $name! 🌸 Nisa bilang: Jangan lupa ambil napas dalam-dalam dan tersenyum! ✨",
+        "Siang $name! 🌸 Pesan Awan: Jangan lupa ambil napas dalam-dalam, istirahat sejenak, dan tersenyum! ✨",
+        if (isNisa) ...[
+          "Halo Nisa! 🌤️ Awan di sini mau ingetin: makan siang tepat waktu ya, kurangi jajan hari ini! 🍹🌸",
+          "Halo Nisa! 🌤️ Siang yang cerah! Jangan lupa makan siang tepat waktu dan kurangi jajan ya! 🍹🌸",
+          "Siang Nisa! 🌸 Awan ingetin: Istirahat yang cukup di sela-sela aktivitasmu, dan jangan telat makan! 🍱✨",
+        ] else ...[
+          "Halo $name! 🌤️ Kak Awan ingetin makan siang tepat waktu ya, kurangi jajan manis! 🍹🍀",
+        ]
       ];
       return options[rng.nextInt(options.length)];
     } else if (hour >= 15 && hour < 19) {
@@ -88,12 +110,15 @@ class _HomeScreenState extends State<HomeScreen> {
         "Sore indah, $name! 🌾 Gimana sisa anggaran belanjamu hari ini?",
         "Sore, $name! 🌇 Senja yang hangat untuk jiwa yang hemat!",
         "Halo $name! 🍃 Angin sore berembus membawa ketenangan bagi dompetmu!",
-        // Easter Eggs:
-        isNisa 
-            ? "Sore Nisa! 🌇 Kak Awan baru kelar beres-beres nih, yuk rekap pengeluaran sore ini! ☁️🌸" 
-            : "Sore $name! 🌇 Kak Awan baru kelar merapikan pembukuan nih, yuk rekap sore ini! ☁️🍀",
         "Sore $name! ☁️ Warna langit sore ini jingga cantik banget, secantik grafik tabunganmu! 📈",
-        "Sore $name! 🍀 Pesan Nisa: Hemat itu bukan pelit, tapi peduli masa depan! 😉",
+        "Sore $name! 🍀 Tips dari Awan: Hemat itu bukan pelit, tapi cara menghargai masa depanmu! 😉",
+        if (isNisa) ...[
+          "Sore Nisa! 🌇 Awan baru selesai merapikan pembukuan nih, yuk catat belanjaan sore ini biar dompet tetap rapi! ☁️🌸",
+          "Sore Nisa! 🌇 Langit senja berhias awan lembut sore ini, saat yang pas untuk merekap catatan belanjamu! ☁️🌸",
+          "Sore Kak Nisa! 🌇 Awan ingetin buat catat ongkos pulang atau jajan sore tadi sebelum lupa ya! 🌸🍃",
+        ] else ...[
+          "Sore $name! 🌇 Kak Awan baru kelar merapikan pembukuan nih, yuk rekap sore ini! ☁️🍀",
+        ]
       ];
       return options[rng.nextInt(options.length)];
     } else if (hour >= 19 && hour < 23) {
@@ -105,49 +130,60 @@ class _HomeScreenState extends State<HomeScreen> {
         "Malam Kak $name! 🛌 Sebelum tidur, yuk cek apakah semua pengeluaran tercatat!",
         "Malam, $name! 🌌 Dompet aman, pikiran tenang, tidur pun nyenyak!",
         "Hai $name! 🍃 Santai sejenak dan rekap pengeluaran malam ini!",
-        // Easter Eggs:
-        isNisa 
-            ? "Malam Nisa! 🌙 Kak Awan nemu struk belanjaan di meja, buruan dicatat sebelum lupa! 😂🌸" 
-            : "Malam $name! 🌙 Kak Awan nemu struk belanjaan keselip, buruan dicatat sebelum lupa! 😂🍀",
         "Malam $name! ☁️ Awan malam bertabur bintang menemani pembukuanmu yang rapi!",
-        "Malam $name! ✨ Kata Nisa: Tidur nyenyak dimulai dari keuangan yang tidak berisik! 🤫🛌",
+        "Malam $name! ✨ Pesan hangat Awan: Tidur yang nyenyak dimulai dari keuangan yang rapi dan hati yang tenang! 🤫🛌",
+        if (isNisa) ...[
+          "Malam Nisa! 🌙 Awan ingetin buat catat struk belanjaan hari ini sebelum tidur ya, biar tidurmu nyenyak! 💤🌸",
+          "Malam Nisa! 🌙 Angin malam berhembus lembut membawa ketenangan, yuk rekap belanjaanmu sebelum beristirahat! ☁️🌸",
+          "Malam Nisa! 🌙 Hayo, ada jajan online yang belum dicatat sore tadi? Awan siap nemenin rekap kok! 😂🌸",
+          "Malam Nisa! 🌙 Jangan kebanyakan scroll TikTok malam-malam ya, dicatat dulu belanjanya terus tidur! 😂🌸",
+        ] else ...[
+          "Malam $name! 🌙 Kak Awan nemu struk belanjaan keselip, buruan dicatat sebelum lupa! 😂🍀",
+        ]
       ];
       return options[rng.nextInt(options.length)];
     } else if (hour >= 23 || hour < 3) {
-      // Tengah Malam (23:00 - 02:59)
+      // Tengah Malam / Awal Dini Hari (23:00 - 02:59)
       final options = [
         "$name masih up? 🦉 Jaga kesehatan juga ya!",
         "Malam larut, $name! ⭐ Jangan lupa istirahat yang cukup!",
         "Hai $name! 🌌 Sunyinya malam paling pas buat merenungi tabungan harian!",
         "Malam Kak $name! 🦉 Masih sibuk? Luangkan 5 detik untuk catat pengeluaran terakhir!",
         "$name belum tidur? 🛌 Anggaranmu aman kok, yuk tidur!",
-        // Easter Eggs:
-        isNisa 
-            ? "Tengah malam Nisa! 🦉 Kak Awan masih pantau nih, jangan scroll e-commerce terus ya! 😂🌸" 
-            : "Tengah malam $name! 🦉 Kak Awan masih pantau nih, jangan scroll e-commerce terus ya! 😂🍀",
         "Midnight $name! ☁️ Bintang-bintang berbisik agar Kakak lekas tidur nyenyak! 🛌",
-        "Malam larut $name! 🌸 Kata Nisa: Begadang boleh saja, asal jangan begadang belanjain saldo! 💸😂",
+        "Malam larut $name! 🌸 Awan ingetin: Begadang boleh saja, asal jangan begadang sambil checkout belanjaan online ya! 💸😂",
+        if (isNisa) ...[
+          "Tengah malam Nisa! 🦉 Awan pantau jam segini masih up... Simpan HP-nya dulu yuk, jangan keasyikan scroll TikTok terus! 😂🌸",
+          "Tengah malam Nisa! 🦉 Tumben belum tidur? Malam sudah larut banget lho, yuk tidur nyenyak biar besok pagi segar! 💤🌸",
+          "Malam larut Nisa! 🌸 Tumben belum tidur? Lagi mikirin anggaran belanja atau asyik scroll TikTok nih? 😂 Awan ingetin istirahat ya! ☁️🌸",
+          "Dini hari Nisa! 🌸 Awan selalu siap nemenin rekap kapan pun kamu butuh bantuan mencatat. Sleep tight! ☁️✨",
+        ] else ...[
+          "Tengah malam $name! 🦉 Kak Awan masih pantau nih, jangan scroll e-commerce terus ya! 😂🍀",
+        ]
       ];
       return options[rng.nextInt(options.length)];
     } else {
-      // Dini Hari (03:00 - 04:59)
+      // Dini Hari Akhir (03:00 - 04:59)
       final options = [
         "Dini hari sunyi, $name! 🌌 Semangat buat yang terbangun lebih awal!",
         "Subuh hampir tiba, $name! ❄️ Udara dini hari sangat menenangkan!",
         "Dini hari produktif, $name! ✨ Rencana besar dimulai dari jam sesunyi ini!",
         "Hai $name! 🛌 Masih terjaga atau baru bangun? Sukses selalu!",
-        // Easter Eggs:
-        isNisa 
-            ? "Dini hari Nisa! 🌸 Kak Awan selalu siap nemenin rekap kapanpun Kakak butuh bantuan! ☁️✨" 
-            : "Dini hari $name! 🍀 Kak Awan selalu siap nemenin rekap kapanpun Kakak butuh bantuan! ☁️✨",
-        "Dini hari $name! ☁️ Dinginnya malam akan segera berganti hangatnya fajar pembuka rezeki!",
-        "Dini hari Kak $name! ⭐ Nisa ingetin: Minum air putih hangat dulu biar segar ya! ☕",
+        "Dini hari $name! ☁️ Dinginnya malam akan segera berganti fajar pembuka rezeki!",
+        "Dini hari Kak $name! ⭐ Awan ingetin: Ambil napas dalam-dalam dan istirahatlah yang cukup ya! ☕",
+        if (isNisa) ...[
+          "Dini hari Nisa! 🌸 Tumben belum tidur di jam sunyi ini? Awan selalu siap siaga nemenin pembukuanmu kapan pun kok! ☁️✨",
+          "Dini hari Nisa! 🌸 Keheningan malam membawa kedamaian, mari tidur cukup agar esok hari terasa segar dan berenergi! ☁️✨",
+        ] else ...[
+          "Dini hari $name! 🍀 Kak Awan selalu siap nemenin rekap kapanpun Kakak butuh bantuan! ☁️✨",
+        ]
       ];
       return options[rng.nextInt(options.length)];
     }
   }
 
   void _showBadgeUnlocked(BuildContext context, String emoji, String title) {
+    final isPencetus = title == "Pencetus Ide";
     showDialog(
       context: context,
       barrierDismissible: true,
@@ -159,14 +195,17 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Text(emoji, style: const TextStyle(fontSize: 52)),
             const SizedBox(height: 12),
-            Text("Badge Baru! 🎉",
+            Text(isPencetus ? "Penghargaan Kehormatan Emas 👑" : "Badge Baru! 🎉",
                 style: TextStyle(fontSize: 13, color: widget.colors.textSecondary, fontWeight: FontWeight.bold)),
             const SizedBox(height: 4),
             Text(title,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w900, color: widget.colors.brandText)),
             const SizedBox(height: 8),
-            Text("Kamu berhasil membuka badge baru!\nTerus semangat mencatat! 🌸",
+            Text(
+                isPencetus
+                    ? "Terinspirasi dari ide awal dan dorongan luar biasa darimu untuk menciptakan aplikasi pembukuan yang manis, praktis, dan menenangkan. Terima kasih telah memicu terwujudnya Catet Uang! 🌸☁️✨"
+                    : "Kamu berhasil membuka badge baru!\nTerus semangat mencatat! 🌸",
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 12, color: widget.colors.textSecondary, height: 1.5)),
           ],
@@ -243,18 +282,22 @@ class _HomeScreenState extends State<HomeScreen> {
     final bool active7Days = uniqueDays >= 7;
     final bool active30Days = uniqueDays >= 30;
 
-    final int totalBadges = 16;
+    final isNisa = (activeProfile?.name ?? '').toLowerCase().contains('nisa');
+    final int totalBadges = isNisa ? 17 : 16;
     final int completedMissions = [
       firstEntry, morningCompleted, balancedCompleted, budgetCompleted,
       fiveEntries, fifteenEntries, masterCompleted, saldoPositif,
       midnightEntry, subuhEntry, hematEkstrem, bosKeuangan,
       active2Days, active5Days, active7Days, active30Days,
+      if (isNisa) true,
     ].where((m) => m).length;
 
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+    return Stack(
+      children: [
+        SingleChildScrollView(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           // Header Row
           _buildHeaderRow(activeProfile),
@@ -357,9 +400,11 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          const SizedBox(height: 24),
         ],
-      ),
+          ),
+        ),
+        if (_tourStep > 0) _buildTourOverlay(),
+      ],
     );
   }
 
@@ -887,6 +932,17 @@ class _HomeScreenState extends State<HomeScreen> {
             _buildBadgeItem(context, "💎", "???", "???", hematEkstrem, true),
             _buildBadgeItem(context, "🏦", "???", "???", bosKeuangan, true),
           ]),
+          if (Provider.of<BudgetProvider>(context, listen: false).activeProfile?.name.toLowerCase().contains('nisa') ?? false) ...[
+            const SizedBox(height: 14),
+            _buildCategoryLabel("👑 Penghargaan Kehormatan"),
+            const SizedBox(height: 8),
+            Row(children: [
+              _buildBadgeItem(context, "👑", "Pencetus Ide", "Inspirator App", true, false),
+              const Expanded(child: SizedBox()),
+              const Expanded(child: SizedBox()),
+              const Expanded(child: SizedBox()),
+            ]),
+          ],
         ],
       ),
     );
@@ -996,6 +1052,130 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           )
         ],
+      ),
+    );
+  }
+
+  Widget _buildTourOverlay() {
+    String title = "";
+    String content = "";
+    Alignment alignment = Alignment.center;
+    IconData icon = Icons.cloud_rounded;
+
+    if (_tourStep == 1) {
+      title = "Halo! Kenalin, Aku Awan! ☁️✨";
+      content = "Aku adalah tour guide pribadimu di Catet Uang!\n\nAku siap nemenin, ngingetin, dan bantu pantau pembukuanmu setiap hari biar rapi dan fikiranmu tetap tenang. Yuk, kita keliling sebentar melihat fitur-fitur di aplikasi ini! 🌸";
+      alignment = Alignment.center;
+      icon = Icons.cloud_rounded;
+    } else if (_tourStep == 2) {
+      title = "📊 Ringkasan Keuangan";
+      content = "Di bagian atas ini adalah tempat memantau Anggaran Bulanan, Saldo, dan Grafik Keuanganmu secara real-time!\n\nSemua perubahan transaksimu akan terpantau otomatis oleh Awan di sini. ☁️📈";
+      alignment = Alignment.topCenter;
+      icon = Icons.donut_large_rounded;
+    } else if (_tourStep == 3) {
+      title = "🏆 Misi & Komitmen Hemat";
+      content = "Geser ke bawah untuk melihat 16+ misi seru!\n\nMisi ini dirancang khusus untuk menantang tingkat kedisiplinanmu. Selesaikan tantangannya untuk membuka piala/badge cantik! 🎖️🍀";
+      alignment = Alignment.center;
+      icon = Icons.emoji_events_rounded;
+    } else if (_tourStep == 4) {
+      title = "✍️ Catat Transaksi Baru";
+      content = "Siap mencoba?\n\nTekan tombol pensil di tengah navigasi bawah untuk langsung mencatat pengeluaran atau pemasukan secara kilat hanya dalam 5 detik! 🚀";
+      alignment = Alignment.bottomCenter;
+      icon = Icons.edit_rounded;
+    }
+
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _tourStep = (_tourStep + 1) % 5;
+        });
+      },
+      child: Container(
+        color: Colors.black.withOpacity(0.7),
+        width: double.infinity,
+        height: double.infinity,
+        alignment: alignment,
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 80),
+        child: TweenAnimationBuilder<double>(
+          tween: Tween(begin: 0.0, end: 1.0),
+          duration: const Duration(milliseconds: 300),
+          builder: (context, value, child) {
+            return Transform.scale(
+              scale: 0.95 + (0.05 * value),
+              child: Opacity(
+                opacity: value,
+                child: child,
+              ),
+            );
+          },
+          child: Material(
+            color: Colors.transparent,
+            child: Container(
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: widget.colors.bottomNavBg,
+                borderRadius: BorderRadius.circular(24),
+                border: Border.all(color: widget.colors.accent, width: 2),
+                boxShadow: [
+                  BoxShadow(
+                    color: widget.colors.accent.withOpacity(0.3),
+                    blurRadius: 20,
+                    spreadRadius: 2,
+                  ),
+                ],
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(icon, color: widget.colors.accent, size: 28),
+                      const SizedBox(width: 10),
+                      Flexible(
+                        child: Text(
+                          title,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w900,
+                            color: widget.colors.brandText,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    content,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: widget.colors.textSecondary,
+                      height: 1.6,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        _tourStep == 4 ? "Mulai Catat Sekarang! 🎉" : "Ketuk untuk Lanjut 🐾",
+                        style: TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.bold,
+                          color: widget.colors.accent,
+                        ),
+                      ),
+                      const SizedBox(width: 4),
+                      Icon(Icons.arrow_forward_rounded, color: widget.colors.accent, size: 14),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
