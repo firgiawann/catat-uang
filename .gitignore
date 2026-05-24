@@ -72,3 +72,6 @@ android/key.properties
 app.*.symbols
 app.*.map.json
 build/app/symbols/
+
+# 📦 Whitelist Release APKs
+!releases/*.apk
