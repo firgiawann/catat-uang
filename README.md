@@ -34,8 +34,11 @@
 Kakak bisa langsung mencoba aplikasi **Catet Uang** secara instan:
 * **💻 Play on Web (Live Preview)**: Buka aplikasi langsung di browser HP atau laptop Kakak tanpa instalasi apa pun! 
   👉 **[https://firgiawann.github.io/catat-uang/](https://firgiawann.github.io/catat-uang/)**
-* **🤖 Unduh File APK Rilis**: Unduh file APK rilis resmi yang sangat ringan (hanya ~18MB untuk tipe 64-bit umum) di halaman Releases repositori ini:
-  👉 **[Unduh APK Rilis Terbaru](https://github.com/firgiawann/catat-uang/releases)**
+* **🤖 Unduh File APK Rilis Langsung (Sangat Ringan & Teroptimasi)**:
+  * 📱 **[Download Universal APK (Tipe Semua HP Android - 47.3 MB)](https://github.com/firgiawann/catat-uang/raw/main/releases/app-release.apk)**
+  * ⚡ **[Download ARM 64-bit APK (HP Android Modern - 17.4 MB)](https://github.com/firgiawann/catat-uang/raw/main/releases/app-arm64-v8a-release.apk)** *(Sangat direkomendasikan!)*
+  * 🍃 **[Download ARM 32-bit APK (HP Android Lama - 15.0 MB)](https://github.com/firgiawann/catat-uang/raw/main/releases/app-armeabi-v7a-release.apk)**
+  * 💻 **[Download x86_64 APK (Laptop / Emulator - 18.8 MB)](https://github.com/firgiawann/catat-uang/raw/main/releases/app-x86_64-release.apk)**
 
 ---
 
