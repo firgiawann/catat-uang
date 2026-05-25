@@ -1,7 +1,7 @@
 # 🪙 Catet Uang — Keuangan Rapi, Pikiran Tenang! ✨
 
 <div align="center">
-  <img src="docs/icons/Icon-512.png" alt="Catet Uang App Logo" width="120" style="border-radius: 30px; margin-bottom: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.12);" onError="this.style.display='none'"/>
+  <img src="docs/releases/261638-removebg-preview.png" alt="Catet Uang App Logo" width="140" style="border-radius: 30px; margin-bottom: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.12);" onError="this.style.display='none'"/>
   
   <p align="center">
     <strong>Aplikasi pencatat keuangan pribadi yang super imut, ringan, dan 100% offline-first.</strong>
@@ -9,19 +9,30 @@
     Bebas iklan, bebas pelacakan internet, cepat dibuka, dan didesain dengan visual yang sangat memanjakan mata! 🌸🍃
   </p>
 
-  <p align="center">
+  <div align="center">
     <a href="https://firgiawann.github.io/catat-uang/">
-      <img src="https://img.shields.io/badge/🌐_Live_Web_Demo-Play_Instantly-ff69b4?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Live Web Demo"/>
+      <img src="https://img.shields.io/badge/🌐_Live_Preview-Open_Web-38bdf8?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Live Web Demo"/>
     </a>
     &nbsp;
-    <a href="https://github.com/firgiawann/catat-uang/releases">
-      <img src="https://img.shields.io/badge/🤖_Download_APK-Release_v1.0.0-green?style=for-the-badge&logo=android&logoColor=white" alt="Download APK"/>
-    </a>
-    &nbsp;
-    <a href="https://firgiawann.github.io/catat-uang/releases/">
-      <img src="https://img.shields.io/badge/⬇️_Download_Center-Halaman_Resmi-8b5cf6?style=for-the-badge&logo=github&logoColor=white" alt="Download Center"/>
-    </a>
-  </p>
+    <details style="display: inline-block;">
+      <summary>
+        <img src="https://img.shields.io/badge/⬇️_Download_APK-Pilih_Versi-60a5fa?style=for-the-badge&logo=android&logoColor=white" alt="Download APK"/>
+      </summary>
+      <div align="left" style="margin-top: 12px;">
+        <strong>Download Center:</strong>
+        <a href="https://firgiawann.github.io/catat-uang/releases/">https://firgiawann.github.io/catat-uang/releases/</a>
+        <br />
+        <br />
+        <a href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-release.apk">app-release.apk (48 MB)</a> — Untuk semua perangkat
+        <br />
+        <a href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-arm64-v8a-release.apk">app-arm64-v8a-release.apk (18 MB)</a> — Paling pas untuk perangkat baru
+        <br />
+        <a href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-armeabi-v7a-release.apk">app-armeabi-v7a-release.apk (15 MB)</a> — Ringan untuk perangkat lama
+        <br />
+        <a href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-x86_64-release.apk">app-x86_64-release.apk (19 MB)</a> — Untuk laptop / emulator
+      </div>
+    </details>
+  </div>
 
   <p align="center">
     <a href="#-fitur-unggulan-manis">Fitur Unggulan</a> •
@@ -35,16 +46,42 @@
 
 ## 🌐 Coba Sekarang! (Live Demo & APK)
 
-Kakak bisa langsung mencoba aplikasi **Catet Uang** secara instan:
-* **💻 Play on Web (Live Preview)**: Buka aplikasi langsung di browser HP atau laptop Kakak tanpa instalasi apa pun! 
-  👉 **[https://firgiawann.github.io/catat-uang/](https://firgiawann.github.io/catat-uang/)**
-* **⬇️ Halaman Download Resmi (Download Center)**: Lihat semua varian APK + info rilis dalam satu halaman cantik.
-  👉 **[https://firgiawann.github.io/catat-uang/releases/](https://firgiawann.github.io/catat-uang/releases/)**
-* **🤖 Unduh File APK Rilis Langsung (Sangat Ringan & Teroptimasi)**:
-  * 📱 **[Download Universal APK (Tipe Semua HP Android - 47.3 MB)](https://github.com/firgiawann/catat-uang/raw/main/releases/app-release.apk)**
-  * ⚡ **[Download ARM 64-bit APK (HP Android Modern - 17.4 MB)](https://github.com/firgiawann/catat-uang/raw/main/releases/app-arm64-v8a-release.apk)** *(Sangat direkomendasikan!)*
-  * 🍃 **[Download ARM 32-bit APK (HP Android Lama - 15.0 MB)](https://github.com/firgiawann/catat-uang/raw/main/releases/app-armeabi-v7a-release.apk)**
-  * 💻 **[Download x86_64 APK (Laptop / Emulator - 18.8 MB)](https://github.com/firgiawann/catat-uang/raw/main/releases/app-x86_64-release.apk)**
+Kakak bisa langsung mencoba aplikasi **Catet Uang** secara instan lewat tombol di bawah ini. Tombol download bisa dibuka-tutup untuk memilih versi APK yang sesuai:
+
+<div align="center">
+  <a href="https://firgiawann.github.io/catat-uang/">
+    <img src="https://img.shields.io/badge/🌐_Live_Preview-Open_Web-38bdf8?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Live Preview"/>
+  </a>
+  &nbsp;
+  <details style="display: inline-block;">
+    <summary>
+      <img src="https://img.shields.io/badge/⬇️_Download_APK-Pilih_Versi-60a5fa?style=for-the-badge&logo=android&logoColor=white" alt="Download APK"/>
+    </summary>
+    <div align="left" style="margin-top: 12px;">
+      <strong>Download Center:</strong>
+      <a href="https://firgiawann.github.io/catat-uang/releases/">https://firgiawann.github.io/catat-uang/releases/</a>
+      <br />
+      <br />
+      <a href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-release.apk">app-release.apk (48 MB)</a> — Untuk semua perangkat
+      <br />
+      <a href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-arm64-v8a-release.apk">app-arm64-v8a-release.apk (18 MB)</a> — Paling pas untuk perangkat baru
+      <br />
+      <a href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-armeabi-v7a-release.apk">app-armeabi-v7a-release.apk (15 MB)</a> — Ringan untuk perangkat lama
+      <br />
+      <a href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-x86_64-release.apk">app-x86_64-release.apk (19 MB)</a> — Untuk laptop / emulator
+    </div>
+  </details>
+</div>
+
+---
+
+## 📸 Preview Tampilan
+
+<p align="center">
+  <img src="docs/releases/Screenshot_2026-05-25-15-16-03-076_id.awni.money.jpg" alt="Preview ringkasan keuangan" width="30%" />
+  <img src="docs/releases/Screenshot_2026-05-25-15-16-05-548_id.awni.money.jpg" alt="Preview daftar transaksi" width="30%" />
+  <img src="docs/releases/Screenshot_2026-05-25-15-16-07-246_id.awni.money.jpg" alt="Preview tema dan profil" width="30%" />
+</p>
 
 ---
 
