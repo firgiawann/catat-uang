@@ -280,13 +280,6 @@ class BudgetProvider with ChangeNotifier {
       await _db.insertTransaction(tx);
       await loadAllData();
       
-      // Silently log transaction success event to Firebase Analytics
-      await AnalyticsHelper.logTransactionSuccess(
-        amount: amount,
-        note: finalNote,
-        isExpense: isExpense,
-        category: finalNote.contains('|') ? finalNote.split('|').last.trim() : finalNote,
-      );
     } catch (e) {
       debugPrint('[BudgetProvider] addTransaction error: $e');
     }
