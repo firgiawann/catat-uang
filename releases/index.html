@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Catet Uang — Download Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0f1226;
+      --surface: rgba(255, 255, 255, 0.08);
+      --surface-strong: rgba(255, 255, 255, 0.16);
+      --primary: #ff79c6;
+      --secondary: #7dd3fc;
+      --accent: #a78bfa;
+      --text: #f8fafc;
+      --muted: rgba(248, 250, 252, 0.7);
+      --shadow: 0 24px 48px rgba(15, 23, 42, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: radial-gradient(circle at top left, rgba(255, 121, 198, 0.22), transparent 42%),
+        radial-gradient(circle at 70% 10%, rgba(125, 211, 252, 0.24), transparent 35%),
+        radial-gradient(circle at 80% 90%, rgba(167, 139, 250, 0.28), transparent 36%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1100px, 92vw);
+      margin: 0 auto;
+      padding: 32px 0 80px;
+    }
+
+    .glow {
+      position: absolute;
+      inset: auto;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(255, 121, 198, 0.5), transparent 70%);
+      filter: blur(10px);
+      opacity: 0.5;
+      animation: float 10s ease-in-out infinite;
+    }
+
+    .glow.one { top: -60px; left: 5%; }
+    .glow.two { top: 180px; right: -40px; animation-delay: 2s; background: radial-gradient(circle, rgba(125, 211, 252, 0.5), transparent 70%); }
+    .glow.three { bottom: 120px; left: -60px; animation-delay: 4s; background: radial-gradient(circle, rgba(167, 139, 250, 0.6), transparent 70%); }
+
+    header {
+      position: relative;
+      padding: 32px 0 12px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 13px;
+      color: var(--muted);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      display: grid;
+      gap: 28px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      align-items: center;
+      margin-top: 32px;
+    }
+
+    .hero-card {
+      padding: 28px;
+      border-radius: 28px;
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255, 121, 198, 0.12), transparent 50%, rgba(125, 211, 252, 0.16));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .hero-card:hover::after {
+      opacity: 1;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-primary {
+      background: linear-gradient(120deg, var(--primary), var(--accent));
+      color: #0f1226;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.16);
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: 0 18px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-highlights {
+      display: grid;
+      gap: 16px;
+    }
+
+    .highlight {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: var(--surface-strong);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .highlight:nth-child(2) { animation-delay: 1.4s; }
+    .highlight:nth-child(3) { animation-delay: 2.6s; }
+
+    .section {
+      margin-top: 64px;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 720px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 22px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      margin-top: 26px;
+    }
+
+    .preview-grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      margin-top: 26px;
+    }
+
+    .preview-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(255, 121, 198, 0.2), rgba(125, 211, 252, 0.18));
+      min-height: 220px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: var(--shadow);
+    }
+
+    .preview-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      display: block;
+    }
+
+    .preview-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .preview-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(15, 18, 38, 0) 35%, rgba(15, 18, 38, 0.85));
+    }
+
+    .preview-caption {
+      position: absolute;
+      bottom: 14px;
+      left: 16px;
+      z-index: 2;
+      font-weight: 600;
+    }
+
+    .card {
+      padding: 22px;
+      border-radius: 24px;
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .download-btn {
+      margin-top: 16px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-top: 24px;
+    }
+
+    .contact-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: var(--surface-strong);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-4px);
+    }
+
+    footer {
+      margin-top: 70px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow one"></div>
+  <div class="glow two"></div>
+  <div class="glow three"></div>
+
+  <div class="container">
+    <header>
+      <span class="badge">✨ Download Center • Catet Uang</span>
+      <div class="hero">
+        <div class="hero-card">
+          <h1 class="hero-title">Catet Uang — Keuangan Rapi, Pikiran Tenang</h1>
+          <p class="hero-subtitle">
+            Tempat resmi untuk mencoba dan mengunduh aplikasi Catet Uang. Semua versi APK sudah dioptimasi ringan,
+            bebas iklan, dan 100% offline-first.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://firgiawann.github.io/catat-uang/" target="_blank" rel="noreferrer">
+              🌐 Live Preview
+            </a>
+            <a class="btn btn-secondary" href="#download">
+              ⬇️ Lihat Download
+            </a>
+          </div>
+        </div>
+        <div class="hero-highlights">
+          <div class="highlight">
+            <strong>💾 Offline-First</strong>
+            <p>Semua data disimpan aman di perangkat dengan SQLite, tanpa login.</p>
+          </div>
+          <div class="highlight">
+            <strong>🎨 Visual Premium</strong>
+            <p>8 tema Flavor, animasi halus, dan tampilan UI yang manis.</p>
+          </div>
+          <div class="highlight">
+            <strong>⚡ Ringan & Cepat</strong>
+            <p>APK split per arsitektur agar ukuran tetap kecil untuk semua perangkat.</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="download" class="section">
+      <h2 class="section-title">Download APK Resmi</h2>
+      <p class="section-subtitle">
+        Pilih versi yang sesuai dengan perangkatmu. Semua file berasal langsung dari rilis resmi Catet Uang.
+      </p>
+      <div class="grid">
+        <div class="card">
+          <span class="chip">✅ Semua Perangkat</span>
+          <h3>Universal APK v1.0.0</h3>
+          <p>Ukuran terbesar namun kompatibel untuk semua tipe HP Android.</p>
+          <p><strong>47.3 MB</strong> • Cocok untuk instal sekali jalan.</p>
+          <a class="btn btn-primary download-btn" href="app-release.apk" download>Download Universal</a>
+        </div>
+        <div class="card">
+          <span class="chip">⚡ Perangkat Terbaru</span>
+          <h3>ARM64 APK v1.0.0</h3>
+          <p>Rekomendasi utama untuk HP Android modern 64-bit.</p>
+          <p><strong>17.4 MB</strong> • Super ringan & cepat.</p>
+          <a class="btn btn-primary download-btn" href="app-arm64-v8a-release.apk" download>Download ARM64</a>
+        </div>
+        <div class="card">
+          <span class="chip">🍃 Perangkat Lama</span>
+          <h3>ARM32 APK v1.0.0</h3>
+          <p>Versi khusus untuk HP Android 32-bit yang lebih lama.</p>
+          <p><strong>15.0 MB</strong> • Hemat memori.</p>
+          <a class="btn btn-primary download-btn" href="app-armeabi-v7a-release.apk" download>Download ARM32</a>
+        </div>
+        <div class="card">
+          <span class="chip">💻 Laptop / Emulator</span>
+          <h3>x86_64 APK v1.0.0</h3>
+          <p>Cocok untuk emulator Android di laptop atau perangkat x86.</p>
+          <p><strong>18.8 MB</strong> • Stabil untuk pengujian.</p>
+          <a class="btn btn-primary download-btn" href="app-x86_64-release.apk" download>Download x86_64</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="preview" class="section">
+      <h2 class="section-title">Preview Tampilan</h2>
+      <p class="section-subtitle">
+        Beberapa cuplikan UI Catet Uang agar kamu bisa merasakan nuansa visualnya sebelum instal.
+      </p>
+      <div class="preview-grid">
+        <figure class="preview-card">
+          <img src="261655.jpg" alt="Preview ringkasan keuangan" onerror="this.style.display='none'" />
+          <figcaption class="preview-caption">Ringkasan Keuangan</figcaption>
+        </figure>
+        <figure class="preview-card">
+          <img src="261656.jpg" alt="Preview daftar transaksi" onerror="this.style.display='none'" />
+          <figcaption class="preview-caption">Daftar Transaksi</figcaption>
+        </figure>
+        <figure class="preview-card">
+          <img src="261658.jpg" alt="Preview tema dan profil" onerror="this.style.display='none'" />
+          <figcaption class="preview-caption">Tema & Profil</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Overview Aplikasi</h2>
+      <p class="section-subtitle">
+        Catet Uang adalah aplikasi pencatat keuangan pribadi yang dirancang agar kebiasaan mencatat jadi ringan dan menyenangkan.
+        Aplikasi ini fokus pada kecepatan, keamanan data lokal, dan tampilan estetik yang bikin kamu betah mencatat setiap hari.
+      </p>
+      <div class="grid">
+        <div class="card">
+          <h3>✨ Deskripsi Singkat</h3>
+          <p>
+            Aplikasi ini membantu mengelola pemasukan dan pengeluaran tanpa ribet login atau koneksi internet. Semua data
+            langsung tersimpan di perangkat, jadi lebih aman dan privat.
+          </p>
+        </div>
+        <div class="card">
+          <h3>🎯 Fokus Utama</h3>
+          <p>
+            Catet Uang menonjolkan tema-tema warna yang cantik, kontrol cepat melalui control pad, serta ringkasan keuangan
+            berbentuk donut chart yang mudah dipahami.
+          </p>
+        </div>
+        <div class="card">
+          <h3>🏆 Pengalaman Seru</h3>
+          <p>
+            Sistem lencana dan misi hemat membuat aktivitas mencatat terasa seperti game ringan, sehingga kamu tetap termotivasi.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Penjelasan Lengkap</h2>
+      <p class="section-subtitle">
+        Dibangun sebagai passion project, Catet Uang mengutamakan kenyamanan pengguna dengan desain UI premium dan performa ringan.
+        Versi APK telah dioptimasi dengan obfuscation dan split per arsitektur agar ukurannya kecil, namun tetap cepat di semua perangkat.
+      </p>
+      <div class="grid">
+        <div class="card">
+          <h3>🔐 Aman & Privat</h3>
+          <p>Data disimpan di SQLite lokal tanpa pelacakan. Tanpa iklan, tanpa akun, tanpa ribet.</p>
+        </div>
+        <div class="card">
+          <h3>🧠 Ringkasan Pintar</h3>
+          <p>Ringkasan harian & bulanan otomatis, termasuk target anggaran dan sisa saldo.</p>
+        </div>
+        <div class="card">
+          <h3>🌸 Tema Flavor</h3>
+          <p>8 tema warna berbeda untuk menyesuaikan mood, dari Strawberry hingga Charcoal.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Kontak Developer</h2>
+      <p class="section-subtitle">Mari terhubung dan kolaborasi! Hubungi aku lewat kontak di bawah ini.</p>
+      <div class="contact-grid">
+        <a class="contact-card" href="mailto:firgiawann.id@gmail.com">
+          <strong>📧 Email</strong>
+          <span>firgiawann.id@gmail.com</span>
+        </a>
+        <a class="contact-card" href="https://wa.me/6285173118500?text=Halo%20Kak" target="_blank" rel="noreferrer">
+          <strong>💬 WhatsApp</strong>
+          <span>+62 85173118500</span>
+        </a>
+        <a class="contact-card" href="https://instagram.com/firgiawan.id" target="_blank" rel="noreferrer">
+          <strong>📸 Instagram</strong>
+          <span>@firgiawan.id</span>
+        </a>
+        <a class="contact-card" href="https://www.facebook.com/firgi.awan.927758" target="_blank" rel="noreferrer">
+          <strong>📘 Facebook</strong>
+          <span>firgi.awan.927758</span>
+        </a>
+        <a class="contact-card" href="https://x.com/iiniawann" target="_blank" rel="noreferrer">
+          <strong>🐦 X (Twitter)</strong>
+          <span>@iiniawann</span>
+        </a>
+        <a class="contact-card" href="https://linkedin.com/in/firgiawann" target="_blank" rel="noreferrer">
+          <strong>💼 LinkedIn</strong>
+          <span>linkedin.com/in/firgiawann</span>
+        </a>
+        <a class="contact-card" href="https://discordapp.com/users/716959396755931166" target="_blank" rel="noreferrer">
+          <strong>🎮 Discord</strong>
+          <span>firgiawann</span>
+        </a>
+        <a class="contact-card" href="https://firgiawann.github.io/" target="_blank" rel="noreferrer">
+          <strong>🌐 Website</strong>
+          <span>firgiawann.github.io</span>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 Firgiawan Listianto · Catet Uang Download Center
+    </footer>
+  </div>
+</body>
+</html>
