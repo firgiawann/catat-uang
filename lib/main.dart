@@ -14,6 +14,7 @@ import 'screens/onboarding_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/catat_screen.dart';
 import 'screens/riwayat_screen.dart';
+import 'screens/privacy_policy_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -260,9 +261,10 @@ class _MainAppScreenState extends State<MainAppScreen> {
   }
 
   void _showAboutDialog(BuildContext context, ThemeColorFlavor colors) {
+    final rootContext = context;
     showDialog(
       context: context,
-      builder: (context) {
+      builder: (dialogContext) {
         return AlertDialog(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
           backgroundColor: Colors.white,
@@ -326,7 +328,21 @@ class _MainAppScreenState extends State<MainAppScreen> {
           ),
           actions: [
             TextButton(
-              onPressed: () => Navigator.pop(context),
+              onPressed: () {
+                Navigator.pop(dialogContext);
+                Navigator.of(rootContext).push(
+                  MaterialPageRoute(
+                    builder: (context) => PrivacyPolicyScreen(colors: colors),
+                  ),
+                );
+              },
+              child: Text(
+                "Kebijakan Privasi",
+                style: TextStyle(color: colors.accent, fontWeight: FontWeight.bold),
+              ),
+            ),
+            TextButton(
+              onPressed: () => Navigator.pop(dialogContext),
               child: Text("Tutup", style: TextStyle(color: colors.brandText, fontWeight: FontWeight.bold)),
             ),
           ],
