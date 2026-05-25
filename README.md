@@ -1,7 +1,7 @@
 # 🪙 Catet Uang — Keuangan Rapi, Pikiran Tenang! ✨
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/andrilistianto/dompet_pintar/main/assets/app_logo_preview.png" alt="Catet Uang App Logo" width="120" style="border-radius: 30px; margin-bottom: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.12);" onError="this.style.display='none'"/>
+  <img src="docs/icons/Icon-512.png" alt="Catet Uang App Logo" width="120" style="border-radius: 30px; margin-bottom: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.12);" onError="this.style.display='none'"/>
   
   <p align="center">
     <strong>Aplikasi pencatat keuangan pribadi yang super imut, ringan, dan 100% offline-first.</strong>
@@ -16,6 +16,10 @@
     &nbsp;
     <a href="https://github.com/firgiawann/catat-uang/releases">
       <img src="https://img.shields.io/badge/🤖_Download_APK-Release_v1.0.0-green?style=for-the-badge&logo=android&logoColor=white" alt="Download APK"/>
+    </a>
+    &nbsp;
+    <a href="https://firgiawann.github.io/catat-uang/releases/">
+      <img src="https://img.shields.io/badge/⬇️_Download_Center-Halaman_Resmi-8b5cf6?style=for-the-badge&logo=github&logoColor=white" alt="Download Center"/>
     </a>
   </p>
 
@@ -34,6 +38,8 @@
 Kakak bisa langsung mencoba aplikasi **Catet Uang** secara instan:
 * **💻 Play on Web (Live Preview)**: Buka aplikasi langsung di browser HP atau laptop Kakak tanpa instalasi apa pun! 
   👉 **[https://firgiawann.github.io/catat-uang/](https://firgiawann.github.io/catat-uang/)**
+* **⬇️ Halaman Download Resmi (Download Center)**: Lihat semua varian APK + info rilis dalam satu halaman cantik.
+  👉 **[https://firgiawann.github.io/catat-uang/releases/](https://firgiawann.github.io/catat-uang/releases/)**
 * **🤖 Unduh File APK Rilis Langsung (Sangat Ringan & Teroptimasi)**:
   * 📱 **[Download Universal APK (Tipe Semua HP Android - 47.3 MB)](https://github.com/firgiawann/catat-uang/raw/main/releases/app-release.apk)**
   * ⚡ **[Download ARM 64-bit APK (HP Android Modern - 17.4 MB)](https://github.com/firgiawann/catat-uang/raw/main/releases/app-arm64-v8a-release.apk)** *(Sangat direkomendasikan!)*
