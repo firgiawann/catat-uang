@@ -29,28 +29,5 @@ class AnalyticsHelper {
     }
   }
 
-  /// Logs custom transaction_success event silently.
-  static Future<void> logTransactionSuccess({
-    required double amount,
-    required String note,
-    required bool isExpense,
-    required String category,
-  }) async {
-    if (!_isInitialized || _analytics == null) return;
-    try {
-      await _analytics!.logEvent(
-        name: 'transaction_success',
-        parameters: {
-          'amount': amount,
-          'note': note,
-          'type': isExpense ? 'expense' : 'income',
-          'category': category,
-          'timestamp': DateTime.now().toIso8601String(),
-        },
-      );
-      debugPrint("Firebase Custom Event logged: transaction_success 💰");
-    } catch (e) {
-      debugPrint("Silent Firebase logTransactionSuccess error: $e");
-    }
-  }
+  // Intentionally no custom event logging to keep analytics limited to app usage.
 }

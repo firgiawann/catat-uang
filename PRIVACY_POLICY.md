@@ -9,16 +9,11 @@ Dokumen ini menjelaskan bagaimana aplikasi **Catet Uang** mengelola data penggun
 Catet Uang adalah aplikasi **offline-first**. Data keuangan seperti transaksi, kategori, catatan, profil, dan preferensi pengguna disimpan **secara lokal** di perangkat menggunakan database lokal (SQLite). Data ini **tidak** dikirim ke server kami.
 
 ### b. Data Analitik (Firebase Analytics)
-Aplikasi ini menggunakan **Firebase Analytics** untuk membantu kami memahami penggunaan aplikasi dan meningkatkan kualitas layanan. Data yang dapat terkirim meliputi:
-- Event penggunaan aplikasi (mis. **app_open**).
-- Event transaksi berhasil (mis. **transaction_success**) yang dapat berisi:
-  - nominal transaksi,
-  - kategori transaksi,
-  - jenis transaksi (pemasukan/pengeluaran),
-  - catatan transaksi yang Anda masukkan,
-  - waktu kejadian.
+Aplikasi ini menggunakan **Firebase Analytics** hanya untuk memahami **berapa kali aplikasi dibuka** dan **di negara mana** aplikasi digunakan. Data yang dapat terkirim meliputi:
+- Event penggunaan aplikasi (mis. **app_open**) untuk menghitung jumlah penggunaan.
+- Informasi negara/region secara agregat yang disediakan oleh Firebase Analytics.
 
-Firebase Analytics juga dapat mengumpulkan informasi standar perangkat dan penggunaan aplikasi sesuai kebijakan Google.
+Kami **tidak** mengirim data transaksi, catatan, kategori, nominal, atau detail pribadi lainnya ke Firebase Analytics.
 
 ## 2. Penggunaan Data
 Data digunakan untuk:
