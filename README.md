@@ -10,7 +10,7 @@
   </p>
 
   <div align="center">
-    <a href="https://firgiawann.github.io/catat-uang/">
+    <a href="https://firgiawann.github.io/catat-uang/" target="_blank" rel="noreferrer">
       <img src="https://img.shields.io/badge/🌐_Live_Preview-Open_Web-38bdf8?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Live Web Demo"/>
     </a>
     &nbsp;
@@ -20,16 +20,16 @@
       </summary>
       <div align="left" style="margin-top: 12px;">
         <strong>Download Center:</strong>
-        <a href="https://firgiawann.github.io/catat-uang/releases/">https://firgiawann.github.io/catat-uang/releases/</a>
+        <a href="https://firgiawann.github.io/catat-uang/releases/" target="_blank" rel="noreferrer">https://firgiawann.github.io/catat-uang/releases/</a>
         <br />
         <br />
-        <a href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-release.apk">app-release.apk (48 MB)</a> — Untuk semua perangkat
+        <a href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-release.apk" target="_blank" rel="noreferrer">app-release.apk (48 MB)</a> — Untuk semua perangkat
         <br />
-        <a href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-arm64-v8a-release.apk">app-arm64-v8a-release.apk (18 MB)</a> — Paling pas untuk perangkat baru
+        <a href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-arm64-v8a-release.apk" target="_blank" rel="noreferrer">app-arm64-v8a-release.apk (18 MB)</a> — Paling pas untuk perangkat baru
         <br />
-        <a href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-armeabi-v7a-release.apk">app-armeabi-v7a-release.apk (15 MB)</a> — Ringan untuk perangkat lama
+        <a href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-armeabi-v7a-release.apk" target="_blank" rel="noreferrer">app-armeabi-v7a-release.apk (15 MB)</a> — Ringan untuk perangkat lama
         <br />
-        <a href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-x86_64-release.apk">app-x86_64-release.apk (19 MB)</a> — Untuk laptop / emulator
+        <a href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-x86_64-release.apk" target="_blank" rel="noreferrer">app-x86_64-release.apk (19 MB)</a> — Untuk laptop / emulator
       </div>
     </details>
   </div>
@@ -49,7 +49,7 @@
 Kakak bisa langsung mencoba aplikasi **Catet Uang** secara instan lewat tombol di bawah ini. Tombol download bisa dibuka-tutup untuk memilih versi APK yang sesuai:
 
 <div align="center">
-  <a href="https://firgiawann.github.io/catat-uang/">
+  <a href="https://firgiawann.github.io/catat-uang/" target="_blank" rel="noreferrer">
     <img src="https://img.shields.io/badge/🌐_Live_Preview-Open_Web-38bdf8?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Live Preview"/>
   </a>
   &nbsp;
@@ -59,16 +59,16 @@ Kakak bisa langsung mencoba aplikasi **Catet Uang** secara instan lewat tombol d
     </summary>
     <div align="left" style="margin-top: 12px;">
       <strong>Download Center:</strong>
-      <a href="https://firgiawann.github.io/catat-uang/releases/">https://firgiawann.github.io/catat-uang/releases/</a>
+      <a href="https://firgiawann.github.io/catat-uang/releases/" target="_blank" rel="noreferrer">https://firgiawann.github.io/catat-uang/releases/</a>
       <br />
       <br />
-      <a href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-release.apk">app-release.apk (48 MB)</a> — Untuk semua perangkat
+      <a href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-release.apk" target="_blank" rel="noreferrer">app-release.apk (48 MB)</a> — Untuk semua perangkat
       <br />
-      <a href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-arm64-v8a-release.apk">app-arm64-v8a-release.apk (18 MB)</a> — Paling pas untuk perangkat baru
+      <a href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-arm64-v8a-release.apk" target="_blank" rel="noreferrer">app-arm64-v8a-release.apk (18 MB)</a> — Paling pas untuk perangkat baru
       <br />
-      <a href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-armeabi-v7a-release.apk">app-armeabi-v7a-release.apk (15 MB)</a> — Ringan untuk perangkat lama
+      <a href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-armeabi-v7a-release.apk" target="_blank" rel="noreferrer">app-armeabi-v7a-release.apk (15 MB)</a> — Ringan untuk perangkat lama
       <br />
-      <a href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-x86_64-release.apk">app-x86_64-release.apk (19 MB)</a> — Untuk laptop / emulator
+      <a href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-x86_64-release.apk" target="_blank" rel="noreferrer">app-x86_64-release.apk (19 MB)</a> — Untuk laptop / emulator
     </div>
   </details>
 </div>
