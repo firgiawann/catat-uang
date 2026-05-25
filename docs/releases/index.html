@@ -63,6 +63,7 @@
       filter: blur(10px);
       opacity: 0.5;
       animation: float 10s ease-in-out infinite;
+      pointer-events: none;
     }
 
     .glow.one { top: -60px; left: 5%; }
@@ -114,6 +115,7 @@
       background: linear-gradient(120deg, rgba(59, 130, 246, 0.18), transparent 50%, rgba(56, 189, 248, 0.2));
       opacity: 0;
       transition: opacity 0.4s ease;
+      pointer-events: none;
     }
 
     .hero-card:hover::after {
@@ -124,6 +126,18 @@
       font-size: clamp(2rem, 3vw, 2.8rem);
       font-weight: 700;
       margin-bottom: 12px;
+    }
+
+    .hero-logo {
+      width: 96px;
+      height: 96px;
+      border-radius: 28px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 18px 30px rgba(8, 18, 44, 0.35);
+      margin-bottom: 18px;
+      object-fit: contain;
     }
 
     .hero-subtitle {
@@ -201,10 +215,16 @@
       flex-direction: column;
       gap: 4px;
       padding: 10px 12px;
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 16px 16px 10px 10px;
+      background: linear-gradient(120deg, rgba(56, 189, 248, 0.18), rgba(59, 130, 246, 0.1));
+      border: 1px solid rgba(255, 255, 255, 0.2);
       font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .download-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 20px rgba(8, 18, 44, 0.3);
     }
 
     .download-item span {
@@ -297,6 +317,7 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(180deg, rgba(15, 18, 38, 0) 35%, rgba(15, 18, 38, 0.85));
+      pointer-events: none;
     }
 
     .preview-caption {
@@ -406,6 +427,7 @@
       <span class="badge">✨ Download Center • Catet Uang</span>
       <div class="hero">
         <div class="hero-card">
+          <img class="hero-logo" src="261638-removebg-preview.png" alt="Logo Catet Uang" onerror="this.style.display='none'" />
           <h1 class="hero-title">Catet Uang — Keuangan Rapi, Pikiran Tenang</h1>
           <p class="hero-subtitle">
             Tempat resmi untuk mencoba dan mengunduh aplikasi Catet Uang. Semua versi APK sudah dioptimasi ringan,
@@ -422,19 +444,19 @@
               <div class="download-panel">
                 <p>Pilih file APK sesuai perangkatmu, bisa dibuka-tutup kapan saja.</p>
                 <div class="download-list">
-                  <a class="download-item" href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-release.apk" download>
+                  <a class="download-item" href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-release.apk" target="_blank" rel="noreferrer" download>
                     app-release.apk (48 MB)
                     <span>Untuk semua perangkat</span>
                   </a>
-                  <a class="download-item" href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-arm64-v8a-release.apk" download>
+                  <a class="download-item" href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-arm64-v8a-release.apk" target="_blank" rel="noreferrer" download>
                     app-arm64-v8a-release.apk (18 MB)
                     <span>Paling pas untuk perangkat baru</span>
                   </a>
-                  <a class="download-item" href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-armeabi-v7a-release.apk" download>
+                  <a class="download-item" href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-armeabi-v7a-release.apk" target="_blank" rel="noreferrer" download>
                     app-armeabi-v7a-release.apk (15 MB)
                     <span>Ringan untuk perangkat lama</span>
                   </a>
-                  <a class="download-item" href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-x86_64-release.apk" download>
+                  <a class="download-item" href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-x86_64-release.apk" target="_blank" rel="noreferrer" download>
                     app-x86_64-release.apk (19 MB)
                     <span>Untuk laptop / emulator</span>
                   </a>
@@ -478,28 +500,28 @@
           <h3>Untuk semua perangkat</h3>
           <p>APK universal yang bisa dipakai di hampir semua HP Android tanpa pilih arsitektur.</p>
           <p><strong>48 MB</strong> • Praktis untuk sekali instal.</p>
-          <a class="btn btn-primary download-btn" href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-release.apk" download>app-release.apk (48 MB)</a>
+          <a class="btn btn-primary download-btn" href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-release.apk" target="_blank" rel="noreferrer" download>app-release.apk (48 MB)</a>
         </div>
         <div class="card" id="download-modern">
           <span class="chip">⚡ ARM 64-bit</span>
           <h3>Untuk perangkat baru</h3>
           <p>Rekomendasi utama untuk HP Android modern 64-bit agar performa maksimal.</p>
           <p><strong>18 MB</strong> • Ukuran kecil dan super cepat.</p>
-          <a class="btn btn-primary download-btn" href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-arm64-v8a-release.apk" download>app-arm64-v8a-release.apk (18 MB)</a>
+          <a class="btn btn-primary download-btn" href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-arm64-v8a-release.apk" target="_blank" rel="noreferrer" download>app-arm64-v8a-release.apk (18 MB)</a>
         </div>
         <div class="card" id="download-legacy">
           <span class="chip">🍃 ARM 32-bit</span>
           <h3>Untuk perangkat lama</h3>
           <p>Ringan untuk HP Android lawas 32-bit agar tetap lancar digunakan.</p>
           <p><strong>15 MB</strong> • Hemat ruang penyimpanan.</p>
-          <a class="btn btn-primary download-btn" href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-armeabi-v7a-release.apk" download>app-armeabi-v7a-release.apk (15 MB)</a>
+          <a class="btn btn-primary download-btn" href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-armeabi-v7a-release.apk" target="_blank" rel="noreferrer" download>app-armeabi-v7a-release.apk (15 MB)</a>
         </div>
         <div class="card" id="download-emulator">
           <span class="chip">💻 x86_64</span>
           <h3>Untuk laptop / emulator</h3>
           <p>Cocok untuk emulator Android di laptop atau PC agar uji coba lebih stabil.</p>
           <p><strong>19 MB</strong> • Stabil untuk testing.</p>
-          <a class="btn btn-primary download-btn" href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-x86_64-release.apk" download>app-x86_64-release.apk (19 MB)</a>
+          <a class="btn btn-primary download-btn" href="https://github.com/firgiawann/catat-uang/raw/main/releases/app-x86_64-release.apk" target="_blank" rel="noreferrer" download>app-x86_64-release.apk (19 MB)</a>
         </div>
       </div>
     </section>
@@ -581,7 +603,7 @@
       <h2 class="section-title">Kontak Developer</h2>
       <p class="section-subtitle">Mari terhubung dan kolaborasi! Hubungi aku lewat kontak di bawah ini.</p>
       <div class="contact-grid">
-        <a class="contact-card" href="mailto:firgiawann.id@gmail.com">
+        <a class="contact-card" href="mailto:firgiawann.id@gmail.com" target="_blank" rel="noreferrer">
           <strong>📧 Email</strong>
           <span>firgiawann.id@gmail.com</span>
         </a>
